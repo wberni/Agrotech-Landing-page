@@ -1,0 +1,166 @@
+/* =========================================================================
+   AGROTECH SOFTWARE — re-skin visual (paleta, tipografías y nav de Landing Page)
+   IMPORTANTE: estructura, selectores, layout y colores FUNCIONALES (estado de
+   nodos: normal/riesgo/saturado/fuera de ventana) se mantienen sin cambios.
+   Solo se actualiza el lenguaje visual (chrome): fondos, bordes, texto, fuentes,
+   y los acentos puramente decorativos (antes "cian") para alinear con la
+   identidad de marca de Landing Page.
+   ========================================================================= */
+
+:root{
+  /* ---- chrome general, alineado a Landing Page ---- */
+  --bg:#0a0d0b;            /* antes #070a0f -> var(--bg-deep) de Landing */
+  --panel:#10140f;         /* antes #0d1219 -> var(--bg-panel) de Landing */
+  --panel-line:#23291f;    /* antes #1b2330 -> var(--line) de Landing */
+  --text:#f3f1e9;          /* antes #dfe6ee -> var(--ink) de Landing */
+  --muted:#7e9183;         /* antes #5f6e80 -> var(--muted) de Landing */
+  --grid:#141a13;          /* antes #121826 -> var(--bg-panel-2) de Landing */
+
+  /* ---- acentos funcionales: SIN CAMBIOS (estado de nodos / mapa / leyenda) ---- */
+  --green:#36d399;   /* normal */
+  --amber:#ffb020;   /* riesgo */
+  --red:#ff4757;     /* saturado */
+  --violet:#7a5fff;  /* fuera de ventana operativa */
+
+  /* ---- acento puramente decorativo: antes "cian", ahora dorado old-money ---- */
+  --cyan:#c9a86a;
+
+  /* ---- tipografías de marca (idénticas a Landing Page) ---- */
+  --display:'Cormorant Garamond', serif;
+  --body:'Montserrat', sans-serif;
+  --mono:'JetBrains Mono', monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--text);font-family:var(--mono);height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+
+/* ============ NAV — idéntico a Landing Page, pero DINÁMICO (no fijo):
+   fluye en el documento, así que la top-bar del software arranca justo
+   donde termina el nav, sin que uno "aplaste" al otro. ============ */
+.nav{
+  position:static;width:100%;flex:none;
+  background:rgba(10,18,13,0.65);
+  backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid rgba(124,255,94,0.08);
+}
+.nav-inner{
+  max-width:1240px;margin:0 auto;padding:18px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.brand-mark{width:22px;height:22px;position:relative;flex:none;}
+.brand-mark svg{width:100%;height:100%;}
+.brand-word{
+  font-family:'Poppins','Montserrat',sans-serif;font-weight:600;font-size:19px;
+  letter-spacing:-0.02em;color:var(--text);
+}
+.brand-word .spark{color:#7CFF5E;}
+.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-links a{
+  font-family:'Poppins','Montserrat',sans-serif;font-size:13.5px;font-weight:500;
+  letter-spacing:0.02em;color:#c4d0c4;
+  transition:color .2s ease;
+}
+.nav-links a:hover{color:#b9ffa6;}
+.nav-cta{
+  background:#7CFF5E;color:#0a160c !important;
+  padding:10px 20px;border-radius:999px;font-weight:600;
+  box-shadow:0 0 0 0 rgba(124,255,94,0.5);
+  transition:box-shadow .25s ease, transform .2s ease;
+}
+.nav-cta:hover{box-shadow:0 0 26px rgba(124,255,94,0.45);transform:translateY(-1px);}
+
+/* ============ APP — el nav ya no está fijo, así que #app simplemente
+   ocupa el resto del alto disponible (flex:1) a continuación del nav.
+   Internamente conserva el mismo grid de filas/columnas que antes. ============ */
+#app{
+  flex:1 1 auto;
+  display:grid;grid-template-columns:1fr 300px;grid-template-rows:44px 1fr 170px;
+  min-height:0;
+}
+
+/* TOP BAR (propio del software, debajo del nav de marca) */
+#topbar{grid-column:1/3;display:flex;align-items:center;justify-content:space-between;background:var(--panel);border-bottom:1px solid var(--panel-line);padding:0 18px;}
+#brand{display:flex;align-items:center;gap:10px;}
+#brand .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;}
+#brand b{font-family:var(--mono);font-size:14px;letter-spacing:2px;color:var(--text);}
+#brand span{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;}
+#clocks{display:flex;gap:16px;align-items:center;}
+#clock{font-family:var(--mono);font-size:12px;color:var(--cyan);letter-spacing:1px;}
+#opClock{font-family:var(--mono);font-size:12px;color:var(--violet);letter-spacing:1px;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* MAP */
+#mapWrap{position:relative;background:var(--bg);border-right:1px solid var(--panel-line);overflow:hidden;}
+#mapCanvas{display:block;width:100%;height:100%;cursor:grab;}
+#mapCanvas:active{cursor:grabbing;}
+#mapLabel{position:absolute;top:10px;left:14px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+#zoomControls{position:absolute;top:10px;right:14px;display:flex;flex-direction:column;gap:6px;z-index:5;}
+#zoomControls button{
+  width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;
+  font-size:16px;line-height:1;border-radius:6px;
+  background:rgba(16,20,15,0.7);backdrop-filter:blur(6px);
+}
+#zoomControls #zoomReset{font-size:13px;}
+#legend{position:absolute;bottom:10px;left:14px;font-family:var(--mono);font-size:10px;color:var(--muted);display:flex;gap:14px;letter-spacing:1px;flex-wrap:wrap;max-width:90%;}
+#legend span{display:flex;align-items:center;gap:5px;}
+.sw{width:8px;height:8px;border-radius:50%;display:inline-block;}
+
+/* Tarjetita de hover sobre un nodo (reemplaza el nombre fijo en el canvas) */
+.hidden{display:none !important;}
+.node-tooltip{
+  position:absolute;top:0;left:0;z-index:10;pointer-events:none;
+  background:rgba(16,20,15,0.92);border:1px solid var(--panel-line);border-radius:8px;
+  padding:10px 13px;min-width:170px;box-shadow:0 10px 30px -8px rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+}
+.node-tooltip .tt-name{font-family:var(--mono);font-size:12px;color:var(--text);letter-spacing:0.5px;margin-bottom:2px;}
+.node-tooltip .tt-type{font-family:var(--mono);font-size:9.5px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.node-tooltip .tt-row{display:flex;justify-content:space-between;gap:14px;font-family:var(--mono);font-size:10.5px;color:var(--muted);padding:2px 0;}
+.node-tooltip .tt-row b{color:var(--text);font-weight:500;}
+
+/* SIDE KPI PANEL */
+#kpiPanel{background:var(--panel);border-left:1px solid var(--panel-line);padding:14px;overflow-y:auto;}
+#kpiPanel h2{font-family:var(--mono);font-size:10px;color:#c9a86a;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;margin-top:14px;}
+#kpiPanel h2:first-child{margin-top:0;}
+.kpi{display:flex;flex-direction:column;border-bottom:1px solid var(--panel-line);padding:9px 0;}
+.kpi .label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+.kpi .value{font-family:var(--display);font-style:italic;font-size:24px;color:var(--text);font-weight:600;}
+.kpi .value.alert{color:var(--red);}
+.kpi .value.ok{color:var(--green);}
+.kpi .sub{font-family:var(--mono);font-size:10px;color:var(--muted);}
+.kpi.econ .value{color:var(--cyan);}
+
+#nodesTable{margin-top:14px;}
+.noderow{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;padding:6px 0;border-bottom:1px solid var(--panel-line);}
+.noderow.hotspot{background:rgba(255,177,32,0.06);border-radius:4px;padding:6px 6px;}
+.noderow .nname{color:var(--text);}
+.noderow .ntype{color:var(--muted);font-size:9px;}
+.noderow .tag{color:var(--amber);font-size:8px;border:1px solid var(--amber);padding:1px 4px;border-radius:3px;letter-spacing:1px;}
+.bar{width:70px;height:5px;background:var(--grid);border-radius:3px;overflow:hidden;flex-shrink:0;}
+.bar i{display:block;height:100%;}
+
+/* BOTTOM: events + controls */
+#bottom{grid-column:1/3;display:grid;grid-template-columns:1fr 380px;border-top:1px solid var(--panel-line);}
+#events{background:var(--panel);padding:10px 16px;overflow-y:auto;border-right:1px solid var(--panel-line);}
+#events h2{font-family:var(--mono);font-size:10px;color:#c9a86a;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.ev{font-family:var(--mono);font-size:11px;padding:3px 0;border-bottom:1px dotted var(--panel-line);display:flex;gap:8px;}
+.ev .t{color:var(--muted);width:58px;flex-shrink:0;}
+.ev.info{color:var(--text);}
+.ev.warn{color:var(--amber);}
+.ev.crit{color:var(--red);}
+
+#controls{background:var(--panel);padding:12px 16px;display:flex;flex-direction:column;gap:10px;}
+#controls h2{font-family:var(--mono);font-size:10px;color:#c9a86a;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px;}
+.row{display:flex;gap:8px;flex-wrap:wrap;}
+button{
+  background:var(--grid);border:1px solid var(--panel-line);color:var(--text);
+  font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  padding:8px 12px;border-radius:6px;cursor:pointer;transition:.15s;
+}
+button:hover{border-color:#7CFF5E;color:#7CFF5E;}
+button.active{background:var(--green);color:#06140d;border-color:var(--green);}
+button.danger:hover{border-color:var(--red);color:var(--red);}
+button.speed.active{background:var(--cyan);color:#241c0c;border-color:var(--cyan);}
+#status{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:auto;}
+#status b{color:var(--green);}
