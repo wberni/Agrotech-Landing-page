@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>AGROTECH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+
+<!-- ============ NAV (idéntico a Landing Page) ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L13.6 8.6L20 12L13.6 15.4L12 22L10.4 15.4L4 12L10.4 8.6L12 2Z" fill="#b6ff3c"/>
+        </svg>
+      </span>
+      <span class="brand-word">agrotech<span class="spark">.</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="../../Landing Page/index.html" class="nav-cta">-> Pagina principal</a>
+    </nav>
+  </div>
+</header>
+
+<div id="app">
+
+  <div id="topbar">
+    <div id="brand">
+      <span class="dot"></span>
+      <b>AGROTECH SOFTWARE</b>
+      <span>TORRE DE CONTROL · AR</span>
+    </div>
+    <div id="clocks">
+      <div id="opClock">Día op. 0.0h</div>
+      <div id="clock">T+00:00:00</div>
+    </div>
+  </div>
+
+  <div id="mapWrap">
+    <canvas id="mapCanvas"></canvas>
+    <div id="mapLabel">Red logística · tiempo real</div>
+    <div id="nodeTooltip" class="node-tooltip hidden"></div>
+    <div id="zoomControls">
+      <button id="zoomIn" title="Acercar">+</button>
+      <button id="zoomOut" title="Alejar">−</button>
+      <button id="zoomReset" title="Restablecer vista">⤾</button>
+    </div>
+    <div id="legend">
+      <span><i class="sw" style="background:#36d399"></i>normal</span>
+      <span><i class="sw" style="background:#ffb020"></i>riesgo</span>
+      <span><i class="sw" style="background:#ff4757"></i>saturado</span>
+      <span><i class="sw" style="background:#7a5fff"></i>fuera de ventana operativa</span>
+      <span><i class="sw" style="background:#46c6e8"></i>camión</span>
+    </div>
+  </div>
+
+  <div id="kpiPanel">
+    <h2>KPIs Operativos</h2>
+    <div class="kpi"><span class="label">Camiones activos</span><span class="value" id="kpiTrucks">0</span><span class="sub">en red ahora</span></div>
+    <div class="kpi"><span class="label">Espera promedio</span><span class="value" id="kpiWait">0 min</span><span class="sub">en cola, nodos</span></div>
+    <div class="kpi"><span class="label">Toneladas descargadas (totales)</span><span class="value" id="kpiThroughput">0 tn</span><span class="sub">descargado acumulado</span></div>
+    <div class="kpi"><span class="label">Nodos saturados</span><span class="value" id="kpiSat">0</span><span class="sub">de <span id="kpiTotalNodes">0</span> totales</span></div>
+    <div class="kpi"><span class="label">Reasignaciones</span><span class="value" id="kpiReassign">0</span><span class="sub">camiones redirigidos</span></div>
+
+    <h2>KPIs Económicos</h2>
+    <div class="kpi econ"><span class="label">Costo total acumulado</span><span class="value" id="kpiTotalCost">$0</span><span class="sub">espera + saturación + desvíos</span></div>
+    <div class="kpi econ"><span class="label">Costo por hora</span><span class="value" id="kpiCostHour">$0/h</span><span class="sub">tasa de quema operativa</span></div>
+    <div class="kpi econ"><span class="label">Costo por tonelada</span><span class="value" id="kpiCostTon">$0/tn</span><span class="sub">eficiencia económica de la red</span></div>
+    <div class="kpi econ"><span class="label">Pérdida por congestión</span><span class="value" id="kpiCongestionRate">$0/min</span><span class="sub">tasa instantánea, por camión afectado</span></div>
+
+
+    <div id="nodesTable">
+      <h2>Estado de Nodos</h2>
+      <div id="nodesList"></div>
+    </div>
+  </div>
+
+  <div id="bottom">
+    <div id="events">
+      <h2>Bitácora de Eventos</h2>
+      <div id="eventsList"></div>
+    </div>
+    <div id="controls">
+      <h2>Simulación</h2>
+      <div class="row">
+        <button id="btnStart">▶ Iniciar</button>
+        <button id="btnStop">■ Detener</button>
+        <button id="btnReset">↺ Reset</button>
+      </div>
+      <h2>Velocidad</h2>
+      <div class="row">
+        <button class="speed active" data-speed="1">x1</button>
+        <button class="speed" data-speed="5">x5</button>
+        <button class="speed" data-speed="10">x10</button>
+      </div>
+      <h2>Eventos de Escenario</h2>
+      <div class="row">
+        <button id="btnRain" class="danger">🌧 Simular lluvia</button>
+        <button id="btnHarvest" class="danger">🌾 Cosecha masiva</button>
+        <button id="btnSaturate" class="danger">⚠ Forzar saturación de puerto</button>
+      </div>
+      <div id="status">Estado: <b id="statusText">detenido</b></div>
+    </div>
+  </div>
+
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

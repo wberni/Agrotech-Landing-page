@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circuito Productivo del Maíz — agrotech</title>
+<meta name="description" content="Recorré el circuito productivo del maíz: desde la siembra y la tierra, hasta la cosecha, el acopio, la industria y el transporte hacia destino.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="circuito.css">
+</head>
+<body>
+
+<div class="grain-field"></div>
+<div class="grid-overlay"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">
+      <span class="brand-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L13.6 8.6L20 12L13.6 15.4L12 22L10.4 15.4L4 12L10.4 8.6L12 2Z" fill="#b6ff3c"/>
+        </svg>
+      </span>
+      <span class="brand-word">agrotech<span class="spark">.</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="../terminos-condiciones.html">Terminos y condiciones</a>
+      <a href="../privacidad.html">Política de privacidad</a>
+      <a href="../../index.html" class="nav-cta">Volver al inicio</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO DE LA SECCIÓN ============ -->
+<header class="circuit-hero">
+  <div class="wrap circuit-hero-inner">
+    <div class="eyebrow"><span class="dot"></span> Guía del circuito agroindustrial</div>
+    <h1>Circuito Productivo <span class="corn">del Maíz</span> <span class="emoji">🌽</span></h1>
+    <p class="lede">Antes de que un camión arranque, el grano ya recorrió un camino largo: tierra, semilla, cosecha, acopio e industria. Conocer ese recorrido es entender por qué cada tramo de transporte importa. Te lo mostramos paso a paso.</p>
+  </div>
+</header>
+
+<!-- ============ STEPPER STICKY ============ -->
+<nav class="stage-stepper" id="stageStepper">
+  <div class="wrap stage-stepper-inner">
+    <a href="#etapa-1" class="stepper-item" data-stage="1">
+      <span class="stepper-num">01</span><span class="stepper-label">Etapa Primaria</span>
+    </a>
+    <a href="#etapa-2" class="stepper-item" data-stage="2">
+      <span class="stepper-num">02</span><span class="stepper-label">Etapa Industrial</span>
+    </a>
+    <a href="#etapa-3" class="stepper-item" data-stage="3">
+      <span class="stepper-num">03</span><span class="stepper-label">Comercialización</span>
+    </a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ ETAPA 1 — PRIMARIA ============ -->
+<section class="stage stage-primaria" id="etapa-1">
+  <div class="wrap">
+    <div class="stage-head">
+      <span class="stage-chip">Etapa 01</span>
+      <h2>Etapa Primaria</h2>
+      <p class="stage-summary">Todo empieza en el campo: preparar la tierra, sembrar, esperar, cosechar y guardar el grano en condiciones. Tres pasos, tres responsables, un mismo objetivo: que el maíz llegue sano al siguiente eslabón.</p>
+    </div>
+
+    <div class="steps-timeline">
+
+      <!-- Paso A -->
+      <article class="step">
+        <div class="step-node">A</div>
+        <div class="step-card">
+          <span class="step-tag tag-productores">Productores</span>
+          <h3>Siembra y preparación de tierra</h3>
+          <p>El proceso empieza con la tierra. En Argentina, hoy se utilizan principalmente <strong>monocultivos</strong>: un modelo que aumenta la producción por hectárea, pero degrada el suelo de forma mucho más acelerada que el sistema de parcelas rotativas.</p>
+          <p>La tierra se prepara con fertilizantes y herbicidas, y luego se siembra la semilla —ya seleccionada según el clima de la zona— sobre el suelo preparado. Los <strong>productores</strong> son los encargados de todo este proceso.</p>
+
+          <div class="step-detail">
+            <h4><span class="pin">📌</span> Comentario — el desgaste silencioso de la tierra</h4>
+            <p>Una alternativa al monocultivo es dividir la tierra en <strong>4 parcelas</strong>: 3 con cultivos activos y 1 en reposo, rotando en cada siembra para alargar la vida útil del suelo. Aun así, sumado al uso constante de agroquímicos como fertilizantes y herbicidas, la tierra sufre un desgaste permanente.</p>
+
+            <div class="parcel-diagram" aria-hidden="true">
+              <div class="parcel active">Cultivo 1</div>
+              <div class="parcel active">Cultivo 2</div>
+              <div class="parcel active">Cultivo 3</div>
+              <div class="parcel rest">En reposo</div>
+            </div>
+            <p class="parcel-caption">4 parcelas — 3 en producción, 1 en reposo. La parcela en reposo rota en cada ciclo de siembra.</p>
+
+            <p>Hoy, en el cultivo de maíz se utilizan máquinas de <strong>siembra directa</strong>. Esta maquinaria realiza tres movimientos en un solo paso:</p>
+            <ol class="mini-process">
+              <li><span class="mp-num">1</span>Abre el surco para la semilla mediante cuchillas o discos.</li>
+              <li><span class="mp-num">2</span>Deposita la semilla junto con el fertilizante.</li>
+              <li><span class="mp-num">3</span>Cierra el surco y deja el suelo listo.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <!-- Paso B -->
+      <article class="step">
+        <div class="step-node">B</div>
+        <div class="step-card">
+          <span class="step-tag tag-productores">Productores</span>
+          <h3>Cosecha</h3>
+          <p>Cuando la planta está lista, los productores agropecuarios cosechan utilizando <strong>cosechadoras</strong>. La máquina corta la planta, trilla el maíz —separando el grano de la chala y el resto de la planta— y lo deposita en la <strong>tolva</strong> de la cosechadora, lista para ser descargada.</p>
+        </div>
+      </article>
+
+      <!-- Paso C -->
+      <article class="step">
+        <div class="step-node">C</div>
+        <div class="step-card">
+          <span class="step-tag tag-acopio">Acopiadoras</span>
+          <h3>Acopio</h3>
+          <p>Las <strong>acopiadoras</strong> reciben el maíz que llega desde las tolvas de cosecha. Allí el grano se pesa, se seca —si es necesario, para bajar la humedad a niveles seguros— y se almacena en los acopios hasta su próximo destino.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ETAPA 2 — INDUSTRIAL ============ -->
+<section class="stage stage-industrial" id="etapa-2">
+  <div class="wrap">
+    <div class="stage-head">
+      <span class="stage-chip chip-gold">Etapa 02</span>
+      <h2>Etapa Industrial</h2>
+      <p class="stage-summary">El maíz almacenado en el acopio pasa a manos de la industria, donde se transforma en algo nuevo.</p>
+    </div>
+
+    <div class="industrial-block">
+      <div class="industrial-icon">🏭</div>
+      <div>
+        <span class="step-tag tag-industria">Empresas alimentarias / bioindustriales</span>
+        <h3>De grano a producto</h3>
+        <p>Acá es donde entran las empresas <strong>alimentarias, bioindustriales</strong> y de otros rubros: toman el maíz que llega desde el acopiador y lo procesan para producir alimentos, balanceados, biocombustibles y demás derivados, listos para salir al mercado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ETAPA 3 — COMERCIALIZACIÓN ============ -->
+<section class="stage stage-comercial" id="etapa-3">
+  <div class="wrap">
+    <div class="stage-head">
+      <span class="stage-chip chip-accent">Etapa 03</span>
+      <h2>Comercialización</h2>
+      <p class="stage-summary">El último tramo, y el que conocemos mejor: llevar el producto a destino, a tiempo y sin sorpresas.</p>
+    </div>
+
+    <div class="commercial-flow">
+      <div class="flow-node origin">
+        <span class="flow-label">Industria</span>
+        <span class="flow-sub">Producto terminado</span>
+      </div>
+      <div class="flow-arrow">
+        <div class="flow-truck">
+          <span class="step-tag tag-agrotech">Transportistas + agrotech</span>
+          <p>Transportistas muy bien preparados, con <strong>agrotech</strong> como torre de control, mueven el producto final hacia su destino: visibilidad en tiempo real, rutas según costo y riesgo, y decisiones que antes eran intuición.</p>
+        </div>
+      </div>
+      <div class="flow-destinations">
+        <div class="flow-node dest">
+          <span class="flow-label">Supermercados</span>
+          <span class="flow-sub">y tiendas</span>
+        </div>
+        <div class="flow-node dest dest-port">
+          <span class="flow-label">Puerto</span>
+          <span class="flow-sub">exportación · próximamente en agrotech</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="circuit-cta">
+      <p>Hoy agrotech ordena el tramo de campo a acopio. El salto hacia el puerto es el siguiente paso del mismo circuito.</p>
+      <a href="../index.html#precios" class="btn-circuit">Ver cómo lo hacemos →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-about">
+      <a href="../index.html" class="logo footer-logo">
+        <span class="logo-text">agrotech</span>
+        <svg class="logo-spark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <path d="M12 0 C12.6 5.2 13.8 7.6 19 8.5 C13.8 9.4 12.6 11.8 12 17 C11.4 11.8 10.2 9.4 5 8.5 C10.2 7.6 11.4 5.2 12 0 Z"/>
+        </svg>
+      </a>
+      <p class="footer-about-text">agrotech es una torre de control logística para el transporte de granos del campo al silo. Ordenamos camiones, acopios y decisiones en tiempo real — y preparamos el camino hacia la exportación.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Enlaces</h4>
+      <a href="../../index.html">Inicio</a>
+      <a href="../Legales/privacidad.html">Política de privacidad</a>
+      <a href="../Legales/terminos-condiciones.html">Terminos y condiciones</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>Bernal Santino (CTO & founder)</p>
+      <p>Berraquero Tiziano (Soporte operativo)</p>
+      <p>+54 9 11 7131-1673</p>
+      <p>supportagrotech@gmail.com</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 agrotech. Todos los derechos reservados.</span>
+  </div>
+</footer>
+
+<script>
+  // resalta el paso del stepper correspondiente a la sección visible
+  const stages = document.querySelectorAll('.stage');
+  const stepperItems = document.querySelectorAll('.stepper-item');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        stepperItems.forEach(it=>it.classList.toggle('current', it.getAttribute('href')==='#'+id));
+      }
+    });
+  }, {rootMargin:'-40% 0px -50% 0px'});
+  stages.forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>
